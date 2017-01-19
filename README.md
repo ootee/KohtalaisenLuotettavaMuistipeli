@@ -1,3 +1,3 @@
 # KohtalaisenLuotettavaMuistipeli
 
-tekstiä
+Muistipeli, jossa korttien paikat vaihtuvat satunnaisesti.
