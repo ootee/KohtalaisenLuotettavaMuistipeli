@@ -1,7 +1,7 @@
 
 package muistipeli.logiikka;
 
-class Pelaaja {
+public class Pelaaja {
     private String nimi;
     private int parit;
 
