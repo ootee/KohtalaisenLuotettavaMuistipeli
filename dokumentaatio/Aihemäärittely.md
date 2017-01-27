@@ -1,5 +1,6 @@
-**Aihe:** Kohtalaisen luotettava muistipeli
+#**Aihe:** Kohtalaisen luotettava muistipeli
 
+**Aihemäärittely**
 Toteutetaan muistipeli, jossa lisää vaikeutta tuo satunnainen korttien paikan vaihtuminen. Peliä voi pelata 1-32 henkilöä ja korttien paikkajon vaihtaminen tapahtuu aina täyden kierroksen jälkeen. Vaikeustasosta riippuen korttien vaihtumisen todennäköisyys vaihtelee 25-75 % välillä.
 
 Pelissä käytetään 32 korttiparia, jotka on järjestetty 8 x 8 ruudukkoon. Alustavasti suunnitelmana on käyttää korttien kuvitukseen ascii-merkkijonoa, mutta ajan salliessa myös grafiikan toteuttaminen voi tulla kyseeseen.
