@@ -12,7 +12,10 @@ public class Pelaaja {
 
     @Override
     public String toString() {
-        return nimi + ": " + parit + "paria";
+        if (parit == 1) {
+            return nimi + ": " + parit + " pari";
+        }
+        return nimi + ": " + parit + " paria";
     }
 
     public String getNimi() {
