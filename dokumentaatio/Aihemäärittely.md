@@ -12,10 +12,10 @@ Pelissä on yhteensä 64 korttia, jotka muodostavat 32 paria. Jokainen pelaaja v
 
 Korttien vaihtamisen todennäköisyys vaihtelee valitun vaikeusasteen mukaan. Tämän jälkeen alkaa seuraava kierros. Tätä jatketaan kunnes kaikki kortit on löydetty. Pelin voittaa eniten pareja löytänyt pelaaja.
 
-**Käyttäjät:** 
+**Käyttäjät** 
 
-pelaaja
+*pelaaja
 
-**Pelaajien toiminnot:**
+**Pelaajien toiminnot**
   * aloita peli
   * valitse kortti 
