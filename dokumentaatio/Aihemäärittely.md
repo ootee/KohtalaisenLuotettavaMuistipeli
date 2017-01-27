@@ -14,7 +14,7 @@ Korttien vaihtamisen todennäköisyys vaihtelee valitun vaikeusasteen mukaan. T�
 
 **Käyttäjät** 
 
-*pelaaja
+* pelaaja
 
 **Pelaajien toiminnot**
   * aloita peli
