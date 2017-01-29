@@ -22,4 +22,4 @@ Korttien vaihtamisen todennäköisyys vaihtelee valitun vaikeusasteen mukaan. T�
 
 **Luokkakaavio**
 
-![Luokkakaavio](dokumentaatio/Luokkakaavio.png)
+![Luokkakaavio](Luokkakaavio.png)
