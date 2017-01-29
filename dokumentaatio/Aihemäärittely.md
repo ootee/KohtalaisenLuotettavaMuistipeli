@@ -19,3 +19,7 @@ Korttien vaihtamisen todennäköisyys vaihtelee valitun vaikeusasteen mukaan. T�
 **Pelaajien toiminnot**
   * aloita peli
   * valitse kortti 
+
+**Luokkakaavio**
+
+![Luokkakaavio](dokumentaatio/Luokkakaavio.png)
