@@ -7,5 +7,3 @@ Muistipeli, jossa korttien paikat vaihtuvat satunnaisesti. Pelin voittaa eniten 
 [Aiheen kuvaus](dokumentaatio/Aihemäärittely.md)
 
 [Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)
-
-![Luokkakaavio](dokumentaatio/Luokkakaavio.png)
