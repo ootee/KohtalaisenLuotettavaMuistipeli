@@ -14,8 +14,8 @@ public class PelaajaTest {
 
     @Before
     public void setUp() {
-        Peli peli = new Peli();
-        peli.luoKortit();
+//        Peli peli = new Peli();
+//        peli.luoKortit();
     }
 
     @Test
@@ -59,5 +59,18 @@ public class PelaajaTest {
         p.loysiParin();
         p.loysiParin();
         assertEquals("Matti: 2 paria", p.toString());
+    }
+    
+    @Test
+    public void testParejaToimiiOikeinYhdellaParilla() {
+        Pelaaja p = new Pelaaja("Matti");
+        p.loysiParin();
+        assertEquals("Sinulla on 1 pari.", p.pareja());
+    }
+    
+    @Test
+    public void testParejaToimiiOikeinNOllallaParilla() {
+        Pelaaja p = new Pelaaja("Matti");
+        assertEquals("Sinulla on 0 paria.", p.pareja());
     }
 }

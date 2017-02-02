@@ -1,16 +1,16 @@
-
 package muistipeli.logiikka;
 
 import java.util.*;
 
 public class Vaihtaja {
+
     private Random random;
 
-    public Vaihtaja() {
-        this.random = new Random();
+    public Vaihtaja(Random random) {
+        this.random = random;
     }
-    
-    public boolean vaihdetaanko(int vaikeustaso) {
+
+    public boolean vaihdetaanko(int vaikeustaso, Random random) {
         double todnak = random.nextDouble();
         if (vaikeustaso == 1 && todnak > 0.75) {
             return true;
@@ -23,10 +23,10 @@ public class Vaihtaja {
         }
         return false;
     }
-    
-    public List<Kortti> vaihdaKortit(List<Kortti> kortit,int vaikeustaso) {
+
+    public List<Kortti> vaihdaKortit(List<Kortti> kortit, int vaikeustaso) {
         //Tarkastetaan vaihdetaanko kortit
-        if(!vaihdetaanko(vaikeustaso)) {
+        if (!vaihdetaanko(vaikeustaso, random)) {
             return kortit;
         }
         //Arvotaan vaihdettavien korttien indeksit
@@ -45,7 +45,5 @@ public class Vaihtaja {
         //Palautetaan korttilista
         return kortit;
     }
-    
-    
-    
+
 }
