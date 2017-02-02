@@ -22,6 +22,13 @@ public class Pelaaja {
         return nimi;
     }
     
+    public String pareja() {
+        if (parit == 1) {
+            return "Sinulla on " + parit + " pari.";
+        }
+        return "Sinulla on " + parit + " paria.";
+    }
+    
     public int getParit() {
         return parit;
     }
