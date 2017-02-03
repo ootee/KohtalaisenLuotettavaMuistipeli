@@ -14,8 +14,7 @@ public class PelaajaTest {
 
     @Before
     public void setUp() {
-//        Peli peli = new Peli();
-//        peli.luoKortit();
+
     }
 
     @Test

@@ -5,7 +5,7 @@ import java.util.*;
 public class Peli {
 
     private List<Kortti> kortit;
-    private List<Boolean> loydetyt;
+    private List<Kortti> loydetyt;
     private List<Pelaaja> pelaajat;
     private int vuoro;
     private int parejaJaljella;
@@ -26,9 +26,6 @@ public class Peli {
             kortit.add(new Kortti("" + i));
         }
 
-        for (int i = 0; i < 64; i++) {
-            loydetyt.add(Boolean.FALSE);
-        }
     }
 
     public void lisaaPelaaja(String nimi) {
@@ -66,10 +63,9 @@ public class Peli {
                 System.out.println("Hyvä " + pelaajat.get(vuorossaOleva).getNimi() + ", löysit parin.");
                 System.out.println("Sinulla on " + pelaajat.get(vuorossaOleva).pareja());
 
-                loydetyt.set(kortti1, Boolean.TRUE);
-                loydetyt.set(kortti2, Boolean.TRUE);
-                
                 parejaJaljella--;
+                
+                loydetyt.add(kortit.get(kortti1));
                 
                 System.out.println("Pareja jäljellä " + parejaJaljella);
             }
@@ -89,6 +85,10 @@ public class Peli {
 
     public void setKortit(List<Kortti> kortit) {
         this.kortit = kortit;
+    }
+    
+    public List<Pelaaja> getPelaajat() {
+        return pelaajat;
     }
 
 }
