@@ -2,6 +2,10 @@ package muistipeli.logiikka;
 
 import java.util.*;
 
+/**
+ * Luokka toteuttaa pelin perustoiminnallisuuden.
+ * 
+ */
 public class Peli {
 
     private List<Kortti> kortit;
@@ -11,6 +15,9 @@ public class Peli {
     private int parejaJaljella;
     private Scanner lukija;
 
+    /**
+     * Alustaa pelin.
+     */
     public Peli() {
         this.lukija = new Scanner(System.in);
         this.kortit = new ArrayList<>();
@@ -20,6 +27,9 @@ public class Peli {
         this.parejaJaljella = 8;
     }
 
+    /**
+     * Luo pelissä käytettävät kortit ja asettaa niille tunnukset.
+     */
     public void luoKortit() {
         for (int i = 0; i < 8; i++) {
             kortit.add(new Kortti("" + i));
@@ -28,17 +38,28 @@ public class Peli {
 
     }
 
+    /**
+     * Lisää pelaajan pelaajalistaan
+     * 
+     * @param nimi Pelaajan nimi
+     */
     public void lisaaPelaaja(String nimi) {
         pelaajat.add(new Pelaaja(nimi));
     }
     
+    /**
+     * Tarkastaa onko kaikki parit jo löydetty.
+     * 
+     * @return onko löytämättömiä pareja jäljellä
+     */
     public boolean parejaOnVielaJaljella() {
-        if (parejaJaljella == 0) {
-            return false;
-        }
-        return true;
+        
+        return parejaJaljella == 0;
     }
 
+    /**
+     * Pelimoottori, työn alla
+     */
     public void pelaa() {
         luoKortit();
         lisaaPelaaja("Matti");
@@ -79,14 +100,27 @@ public class Peli {
         }
     }
 
+    /**
+     *  
+     * 
+     * @return
+     */
     public List<Kortti> getKortit() {
         return kortit;
     }
 
+    /**
+     *
+     * @param kortit
+     */
     public void setKortit(List<Kortti> kortit) {
         this.kortit = kortit;
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Pelaaja> getPelaajat() {
         return pelaajat;
     }

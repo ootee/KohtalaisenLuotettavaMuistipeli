@@ -3,13 +3,26 @@ package muistipeli.logiikka;
 
 import java.util.Objects;
 
+/**
+ * Tarjoaa pelin käyttämät korttioliot.
+ * 
+ */
 public class Kortti {
     private String tunnus;
 
+    /**
+     * Luo korttiolion, joka saa tununksekseen parametrina annetun merkkijonon.
+     * 
+     * @param tunnus kortin tunnus
+     */
     public Kortti(String tunnus) {
         this.tunnus = tunnus;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTunnus() {
         return tunnus;
     }
