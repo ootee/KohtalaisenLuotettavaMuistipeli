@@ -37,11 +37,9 @@
                 <configuration>
                     <targetClasses>
                         <param>muistipeli.logiikka.*</param>
-                        <param>muistipeli.kayttoliittyma.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>muistipeli.logiikka.*</param>
-                        <param>muistipeli.kayttoliittyma.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
