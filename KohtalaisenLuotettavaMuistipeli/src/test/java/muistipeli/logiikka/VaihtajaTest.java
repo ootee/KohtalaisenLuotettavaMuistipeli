@@ -1,7 +1,6 @@
 package muistipeli.logiikka;
 
 import java.util.*;
-import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

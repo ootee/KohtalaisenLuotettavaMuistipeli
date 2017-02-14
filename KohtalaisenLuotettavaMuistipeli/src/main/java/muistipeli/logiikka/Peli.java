@@ -47,6 +47,10 @@ public class Peli {
         pelaajat.add(new Pelaaja(nimi));
     }
     
+    public void lisaaPelaaja() {
+        pelaajat.add(new Pelaaja("Pelaaja " + pelaajat.size() + 1));
+    }
+    
     /**
      * Tarkastaa onko kaikki parit jo löydetty.
      * 
@@ -97,6 +101,24 @@ public class Peli {
         System.out.println("Peli loppu.");
         for (Pelaaja p : pelaajat) {
             System.out.println(p);
+        }
+    }
+    
+    public Kortti valitseKortti(int kortinNumero) {
+        return kortit.get(kortinNumero);
+    }
+    
+    public boolean onkoPari(Kortti yksi, Kortti kaksi) {
+        return yksi.equals(kaksi);
+    }
+    
+    public void pariLoydetty() {
+        this.parejaJaljella--;
+    }
+    
+    public void luoPelaajat(int lkm) {
+        for (int i = 0; i < lkm; i++) {
+            lisaaPelaaja();
         }
     }
 
