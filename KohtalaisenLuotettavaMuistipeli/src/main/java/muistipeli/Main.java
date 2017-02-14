@@ -9,8 +9,6 @@ public class Main {
         Kayttoliittyma kali = new Kayttoliittyma();
         kali.run();
         
-        Peli peli = new Peli();
-        peli.pelaa();
     }
 
 }

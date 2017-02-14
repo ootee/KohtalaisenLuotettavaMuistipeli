@@ -31,7 +31,7 @@ public class Peli {
      * Luo pelissä käytettävät kortit ja asettaa niille tunnukset.
      */
     public void luoKortit() {
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 64; i++) {
             kortit.add(new Kortti("" + i));
             kortit.add(new Kortti("" + i));
         }

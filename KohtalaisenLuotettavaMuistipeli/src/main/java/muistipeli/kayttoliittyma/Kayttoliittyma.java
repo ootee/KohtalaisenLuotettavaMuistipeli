@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.*;
 import javax.swing.*;
+import muistipeli.logiikka.Peli;
 
 public class Kayttoliittyma implements Runnable {
 
@@ -15,6 +16,7 @@ public class Kayttoliittyma implements Runnable {
     private JTextField tekstikentta;
     private JButton ok;
     private NappuloidenKuuntelija kuuntelija;
+    private Peli peli;
 
     public Kayttoliittyma() {
         
@@ -35,6 +37,8 @@ public class Kayttoliittyma implements Runnable {
 
         frame.pack();
         frame.setVisible(true);
+        
+        peli.pelaa();
     }
 
     private void luoKomponentit(Container container) {
