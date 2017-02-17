@@ -3,11 +3,19 @@ package muistipeli.logiikka;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luo korttipakan jossa korttien tunnuksina on hienoja merkkejä.
+ * 
+ * @author otanttu
+ */
 public class Korttipakka {
 
     private List<Kortti> korttipakka;
     private List<String> tunnukset;
 
+    /**
+     *
+     */
     public Korttipakka() {
         this.korttipakka = new ArrayList<>();
         this.tunnukset = new ArrayList<>();
@@ -52,6 +60,10 @@ public class Korttipakka {
         }
     }
     
+    /**
+     * Palauttaa luodun korttipakan.
+     * @return korttipakka
+     */
     public List<Kortti> getKorttipakka() {
         return korttipakka;
     }
