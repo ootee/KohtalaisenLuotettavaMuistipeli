@@ -3,6 +3,7 @@ package muistipeli.kayttoliittyma;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.*;
 import javax.swing.*;
@@ -18,8 +19,8 @@ public class Kayttoliittyma implements Runnable {
     private NappuloidenKuuntelija kuuntelija;
     private Peli peli;
 
-    public Kayttoliittyma() {
-        
+    public Kayttoliittyma(Peli peli) {
+        this.peli = peli;
     }
 
     @Override
@@ -33,17 +34,21 @@ public class Kayttoliittyma implements Runnable {
 
         luoKomponentit(frame.getContentPane());
 
-        this.kuuntelija = new NappuloidenKuuntelija(nappulat, viestikentta, tekstikentta, ok, frame);
-
         frame.pack();
         frame.setVisible(true);
+        
+        kuuntelija.setNappulat(nappulat);
         
         peli.pelaa();
     }
 
     private void luoKomponentit(Container container) {
+        this.kuuntelija = new NappuloidenKuuntelija(nappulat, viestikentta, tekstikentta, ok, frame, peli);
+
         this.viestikentta = new JLabel("Tähän tulee ohjelman antamat viestit.");
+        
         viestikentta.setPreferredSize(new Dimension(600, 30));
+        
         container.add(viestikentta, BorderLayout.NORTH);
 
         container.add(luoTekstikentta(), BorderLayout.SOUTH);
@@ -57,6 +62,7 @@ public class Kayttoliittyma implements Runnable {
         this.nappulat = new ArrayList<>();
         for (int i = 0; i < 64; i++) {
             JButton nappi = new JButton();
+            nappi.setFont(new Font("Sans-Serif", Font.PLAIN, 40));
             nappi.addActionListener(kuuntelija);
             nappulat.add(nappi);
             panel.add(nappi);
@@ -73,14 +79,14 @@ public class Kayttoliittyma implements Runnable {
         panel.add(tekstikentta, BorderLayout.WEST);
 
         this.ok = new JButton("OK");
-        ok.setPreferredSize(new Dimension(90, 30));
+        ok.setPreferredSize(new Dimension(80, 30));
         ok.addActionListener(kuuntelija);
         panel.add(ok, BorderLayout.EAST);
 
         return panel;
     }
 
-    public JFrame getfFrame() {
+    public JFrame getFrame() {
         return frame;
     }
 }

@@ -20,32 +20,43 @@ import muistipeli.logiikka.Peli;
  * @author otanttu
  */
 public class NappuloidenKuuntelija implements ActionListener {
+
     private Peli peli;
     private List<JButton> nappulat;
     private JLabel viestikentta;
     private JTextField tekstikentta;
     private JButton ok;
     private JFrame frame;
-    
-    public NappuloidenKuuntelija(List<JButton> nappulat, JLabel viestikentta, JTextField tekstikentta, JButton ok, JFrame frame) {
+
+    public NappuloidenKuuntelija(List<JButton> nappulat, JLabel viestikentta, JTextField tekstikentta, JButton ok, JFrame frame, Peli peli) {
         this.nappulat = nappulat;
         this.viestikentta = viestikentta;
         this.tekstikentta = tekstikentta;
         this.ok = ok;
         this.frame = frame;
+        this.peli = peli;
     }
 
-    
     @Override
     public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
         if (e.getSource() == nappulat) {
             nappulat.get(nappulat.indexOf(e)).setText("Moi");
             frame.repaint();
         }     
+=======
+>>>>>>> 3bcb7d18fc6c5b63e6162c90836e742d3072493a
 
+        int kortti = nappulat.indexOf(e.getSource());
         
+        nappulat.get(kortti).setText(peli.getKortit().get(kortti).getTunnus());
+        
+        nappulat.get(kortti).setEnabled(false);
+
     }
-    
-    
-    
+
+    public void setNappulat(List<JButton> nappulat) {
+        this.nappulat = nappulat;
+    }
+
 }
