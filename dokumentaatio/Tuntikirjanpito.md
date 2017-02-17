@@ -8,3 +8,4 @@ Päivä      |Tunnit| Kuvaus
 03.02.2017 |   2  | Lisää testejä
 10.02.2017 |  2,5 | Käyttöliittymän runko, Javadoc
 14.02.2017 |  3,5 | ActionListener luotu
+17.02.2017 |   2  | ActionListenerin ihmettelyä
