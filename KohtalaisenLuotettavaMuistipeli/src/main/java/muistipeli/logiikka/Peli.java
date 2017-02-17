@@ -16,33 +16,26 @@ public class Peli {
     private int vuoro;
     private int parejaJaljella;
     private Scanner lukija;
-    private Kayttoliittyma kayttoliittyma;
-    private NappuloidenKuuntelija kuuntelija;
+    private Korttipakka korttipakka;
+   
 
     /**
      * Alustaa pelin.
      */
-    public Peli(Kayttoliittyma kali, NappuloidenKuuntelija kuuntelija) {
+    public Peli() {
         this.lukija = new Scanner(System.in);
-        this.kortit = new ArrayList<>();
         this.pelaajat = new ArrayList<>();
         this.loydetyt = new ArrayList<>();
         this.vuoro = 1;
-        this.parejaJaljella = 8;
-        this.kayttoliittyma = kali;
-        this.kuuntelija = kuuntelija;
+        this.parejaJaljella = 32;
+        this.korttipakka = new Korttipakka();
+        this.kortit = korttipakka.getKorttipakka();
     }
 
     /**
      * Luo pelissä käytettävät kortit ja asettaa niille tunnukset.
      */
-    public void luoKortit() {
-        for (int i = 0; i < 64; i++) {
-            kortit.add(new Kortti("" + i));
-            kortit.add(new Kortti("" + i));
-        }
-    }
-
+    
     /**
      * Lisää pelaajan pelaajalistaan
      * 
@@ -70,43 +63,42 @@ public class Peli {
      * Pelimoottori, työn alla
      */
     public void pelaa() {
-        luoKortit();
-        lisaaPelaaja("Matti");
-        lisaaPelaaja("Pekka");
-        while (parejaOnVielaJaljella()) {
-            vuorossaOleva().getNimi();
-
-            System.out.println("Vuorossa: " + vuorossaOleva().getNimi());
-            System.out.println("");
-
-            System.out.print("Valitse ensimmäinen kortti. ");
-            int kortti1 = Integer.parseInt(lukija.nextLine());
-            System.out.println(kortit.get(kortti1));
-
-            System.out.print("Valitse toinen kortti. ");
-            int kortti2 = Integer.parseInt(lukija.nextLine());
-            System.out.println(kortit.get(kortti2));
-
-            if (kortit.get(kortti1).equals(kortit.get(kortti2))) {
-                vuorossaOleva().loysiParin();
-
-                System.out.println("Hyvä " + vuorossaOleva().getNimi() + ", löysit parin.");
-                System.out.println("Sinulla on " + vuorossaOleva().pareja());
-
-                parejaJaljella--;
-                
-                loydetyt.add(kortit.get(kortti1));
-                
-                System.out.println("Pareja jäljellä " + parejaJaljella);
-            }
-            vuoro++;
-
-        }
-        
-        System.out.println("Peli loppu.");
-        for (Pelaaja p : pelaajat) {
-            System.out.println(p);
-        }
+        Collections.shuffle(kortit);
+//        lisaaPelaaja("Matti");
+//        lisaaPelaaja("Pekka");
+//        while (parejaOnVielaJaljella()) {
+//
+//            System.out.println("Vuorossa: " + vuorossaOleva().getNimi());
+//            System.out.println("");
+//
+//            System.out.print("Valitse ensimmäinen kortti. ");
+//            int kortti1 = Integer.parseInt(lukija.nextLine());
+//            System.out.println(kortit.get(kortti1));
+//
+//            System.out.print("Valitse toinen kortti. ");
+//            int kortti2 = Integer.parseInt(lukija.nextLine());
+//            System.out.println(kortit.get(kortti2));
+//
+//            if (kortit.get(kortti1).equals(kortit.get(kortti2))) {
+//                vuorossaOleva().loysiParin();
+//
+//                System.out.println("Hyvä " + vuorossaOleva().getNimi() + ", löysit parin.");
+//                System.out.println("Sinulla on " + vuorossaOleva().pareja());
+//
+//                parejaJaljella--;
+//                
+//                loydetyt.add(kortit.get(kortti1));
+//                
+//                System.out.println("Pareja jäljellä " + parejaJaljella);
+//            }
+//            vuoro++;
+//
+//        }
+//        
+//        System.out.println("Peli loppu.");
+//        for (Pelaaja p : pelaajat) {
+//            System.out.println(p);
+//        }
     }
     
     public Kortti valitseKortti(int kortinNumero) {

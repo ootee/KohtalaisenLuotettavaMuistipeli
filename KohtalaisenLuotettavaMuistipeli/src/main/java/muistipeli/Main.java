@@ -6,7 +6,10 @@ import muistipeli.logiikka.Peli;
 public class Main {
 
     public static void main(String[] args) {
-        Kayttoliittyma kali = new Kayttoliittyma();
+        Peli peli = new Peli();
+        
+        Kayttoliittyma kali = new Kayttoliittyma(peli);
+        
         kali.run();
         
     }

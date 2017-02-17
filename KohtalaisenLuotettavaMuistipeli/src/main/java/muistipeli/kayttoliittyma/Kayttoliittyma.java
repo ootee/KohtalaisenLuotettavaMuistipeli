@@ -3,6 +3,7 @@ package muistipeli.kayttoliittyma;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.*;
 import javax.swing.*;
@@ -18,8 +19,8 @@ public class Kayttoliittyma implements Runnable {
     private NappuloidenKuuntelija kuuntelija;
     private Peli peli;
 
-    public Kayttoliittyma() {
-
+    public Kayttoliittyma(Peli peli) {
+        this.peli = peli;
     }
 
     @Override
@@ -38,12 +39,11 @@ public class Kayttoliittyma implements Runnable {
         
         kuuntelija.setNappulat(nappulat);
         
-        this.peli = new Peli(this, kuuntelija);
         peli.pelaa();
     }
 
     private void luoKomponentit(Container container) {
-        this.kuuntelija = new NappuloidenKuuntelija(nappulat, viestikentta, tekstikentta, ok, frame);
+        this.kuuntelija = new NappuloidenKuuntelija(nappulat, viestikentta, tekstikentta, ok, frame, peli);
 
         this.viestikentta = new JLabel("Tähän tulee ohjelman antamat viestit.");
         
@@ -62,6 +62,7 @@ public class Kayttoliittyma implements Runnable {
         this.nappulat = new ArrayList<>();
         for (int i = 0; i < 64; i++) {
             JButton nappi = new JButton();
+            nappi.setFont(new Font("Sans-Serif", Font.PLAIN, 40));
             nappi.addActionListener(kuuntelija);
             nappulat.add(nappi);
             panel.add(nappi);
@@ -85,7 +86,7 @@ public class Kayttoliittyma implements Runnable {
         return panel;
     }
 
-    public JFrame getfFrame() {
+    public JFrame getFrame() {
         return frame;
     }
 }
