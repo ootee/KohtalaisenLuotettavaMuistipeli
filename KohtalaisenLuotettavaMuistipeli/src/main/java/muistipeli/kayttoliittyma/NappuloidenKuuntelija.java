@@ -39,9 +39,7 @@ public class NappuloidenKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == nappulat) {
-            int kortinIndeksi = nappulat.indexOf(e);
-            Kortti k1 = peli.getKortit().get(kortinIndeksi);
-            nappulat.get(kortinIndeksi).setText(k1.getTunnus());
+            nappulat.get(nappulat.indexOf(e)).setText("Moi");
             frame.repaint();
         }     
 
