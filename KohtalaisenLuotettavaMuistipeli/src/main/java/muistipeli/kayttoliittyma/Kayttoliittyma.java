@@ -19,7 +19,7 @@ public class Kayttoliittyma implements Runnable {
     private Peli peli;
 
     public Kayttoliittyma() {
-        
+
     }
 
     @Override
@@ -33,17 +33,22 @@ public class Kayttoliittyma implements Runnable {
 
         luoKomponentit(frame.getContentPane());
 
-        this.kuuntelija = new NappuloidenKuuntelija(nappulat, viestikentta, tekstikentta, ok, frame);
-
         frame.pack();
         frame.setVisible(true);
         
+        kuuntelija.setNappulat(nappulat);
+        
+        this.peli = new Peli(this, kuuntelija);
         peli.pelaa();
     }
 
     private void luoKomponentit(Container container) {
+        this.kuuntelija = new NappuloidenKuuntelija(nappulat, viestikentta, tekstikentta, ok, frame);
+
         this.viestikentta = new JLabel("Tähän tulee ohjelman antamat viestit.");
+        
         viestikentta.setPreferredSize(new Dimension(600, 30));
+        
         container.add(viestikentta, BorderLayout.NORTH);
 
         container.add(luoTekstikentta(), BorderLayout.SOUTH);
@@ -73,7 +78,7 @@ public class Kayttoliittyma implements Runnable {
         panel.add(tekstikentta, BorderLayout.WEST);
 
         this.ok = new JButton("OK");
-        ok.setPreferredSize(new Dimension(90, 30));
+        ok.setPreferredSize(new Dimension(80, 30));
         ok.addActionListener(kuuntelija);
         panel.add(ok, BorderLayout.EAST);
 

@@ -1,6 +1,8 @@
 package muistipeli.logiikka;
 
 import java.util.*;
+import muistipeli.kayttoliittyma.Kayttoliittyma;
+import muistipeli.kayttoliittyma.NappuloidenKuuntelija;
 
 /**
  * Luokka toteuttaa pelin perustoiminnallisuuden.
@@ -14,17 +16,21 @@ public class Peli {
     private int vuoro;
     private int parejaJaljella;
     private Scanner lukija;
+    private Kayttoliittyma kayttoliittyma;
+    private NappuloidenKuuntelija kuuntelija;
 
     /**
      * Alustaa pelin.
      */
-    public Peli() {
+    public Peli(Kayttoliittyma kali, NappuloidenKuuntelija kuuntelija) {
         this.lukija = new Scanner(System.in);
         this.kortit = new ArrayList<>();
         this.pelaajat = new ArrayList<>();
         this.loydetyt = new ArrayList<>();
         this.vuoro = 1;
         this.parejaJaljella = 8;
+        this.kayttoliittyma = kali;
+        this.kuuntelija = kuuntelija;
     }
 
     /**
@@ -35,7 +41,6 @@ public class Peli {
             kortit.add(new Kortti("" + i));
             kortit.add(new Kortti("" + i));
         }
-
     }
 
     /**
@@ -69,9 +74,9 @@ public class Peli {
         lisaaPelaaja("Matti");
         lisaaPelaaja("Pekka");
         while (parejaOnVielaJaljella()) {
-            int vuorossaOleva = vuoro % pelaajat.size();
+            vuorossaOleva().getNimi();
 
-            System.out.println("Vuorossa: " + pelaajat.get(vuorossaOleva));
+            System.out.println("Vuorossa: " + vuorossaOleva().getNimi());
             System.out.println("");
 
             System.out.print("Valitse ensimmäinen kortti. ");
@@ -83,10 +88,10 @@ public class Peli {
             System.out.println(kortit.get(kortti2));
 
             if (kortit.get(kortti1).equals(kortit.get(kortti2))) {
-                pelaajat.get(vuorossaOleva).loysiParin();
+                vuorossaOleva().loysiParin();
 
-                System.out.println("Hyvä " + pelaajat.get(vuorossaOleva).getNimi() + ", löysit parin.");
-                System.out.println("Sinulla on " + pelaajat.get(vuorossaOleva).pareja());
+                System.out.println("Hyvä " + vuorossaOleva().getNimi() + ", löysit parin.");
+                System.out.println("Sinulla on " + vuorossaOleva().pareja());
 
                 parejaJaljella--;
                 
@@ -120,6 +125,10 @@ public class Peli {
         for (int i = 0; i < lkm; i++) {
             lisaaPelaaja();
         }
+    }
+    
+    public Pelaaja vuorossaOleva() {
+        return pelaajat.get(vuoro % pelaajat.size());
     }
 
     /**
