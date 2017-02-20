@@ -1,6 +1,7 @@
 package muistipeli.logiikka;
 
 import java.util.*;
+import muistipeli.kayttoliittyma.Kaannettava;
 import muistipeli.kayttoliittyma.Kayttoliittyma;
 import muistipeli.kayttoliittyma.NappuloidenKuuntelija;
 
@@ -17,6 +18,9 @@ public class Peli {
     private int parejaJaljella;
     private Scanner lukija;
     private Korttipakka korttipakka;
+    private Kaannettava kaannettava;
+    private Kortti ekaKortti;
+    private Kortti tokaKortti;
    
 
     /**
@@ -30,6 +34,7 @@ public class Peli {
         this.parejaJaljella = 32;
         this.korttipakka = new Korttipakka();
         this.kortit = korttipakka.getKorttipakka();
+        
     }
 
     /**
@@ -56,18 +61,27 @@ public class Peli {
      */
     public boolean parejaOnVielaJaljella() {
         
-        return parejaJaljella == 0;
+        return parejaJaljella != 0;
     }
 
+    public void kaannaKortti(int indeksi) {
+        
+        kaannettava.kaannaKorttiEsiin(indeksi);
+    }
+    
     /**
      * Pelimoottori, työn alla
      */
+    
     public void pelaa() {
         Collections.shuffle(kortit);
 //        lisaaPelaaja("Matti");
 //        lisaaPelaaja("Pekka");
 //        while (parejaOnVielaJaljella()) {
-//
+//            
+//            
+//        }
+
 //            System.out.println("Vuorossa: " + vuorossaOleva().getNimi());
 //            System.out.println("");
 //
@@ -148,4 +162,10 @@ public class Peli {
         return pelaajat;
     }
 
+    public void setKaannettava(Kaannettava kaannettava) {
+        this.kaannettava = kaannettava;
+    }
+
+    
+    
 }

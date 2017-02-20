@@ -42,10 +42,7 @@ public class NappuloidenKuuntelija implements ActionListener {
 
         int kortti = nappulat.indexOf(e.getSource());
         
-        nappulat.get(kortti).setText(peli.getKortit().get(kortti).getTunnus());
-        
-        nappulat.get(kortti).setEnabled(false);
-
+        peli.kaannaKortti(kortti);
     }
 
     public void setNappulat(List<JButton> nappulat) {

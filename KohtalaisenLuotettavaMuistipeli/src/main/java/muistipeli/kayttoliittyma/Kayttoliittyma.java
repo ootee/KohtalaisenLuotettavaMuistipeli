@@ -9,7 +9,7 @@ import java.util.*;
 import javax.swing.*;
 import muistipeli.logiikka.Peli;
 
-public class Kayttoliittyma implements Runnable {
+public class Kayttoliittyma implements Runnable, Kaannettava {
 
     private JFrame frame;
     private List<JButton> nappulat;
@@ -39,6 +39,8 @@ public class Kayttoliittyma implements Runnable {
         
         kuuntelija.setNappulat(nappulat);
         
+        peli.setKaannettava(this);
+        
         peli.pelaa();
     }
 
@@ -62,7 +64,7 @@ public class Kayttoliittyma implements Runnable {
         this.nappulat = new ArrayList<>();
         for (int i = 0; i < 64; i++) {
             JButton nappi = new JButton();
-            nappi.setFont(new Font("Sans-Serif", Font.PLAIN, 40));
+            nappi.setFont(new Font("Sans-Serif", Font.PLAIN, 35));
             nappi.addActionListener(kuuntelija);
             nappulat.add(nappi);
             panel.add(nappi);
@@ -73,13 +75,13 @@ public class Kayttoliittyma implements Runnable {
     private JPanel luoTekstikentta() {
         JPanel panel = new JPanel();
 
-        this.tekstikentta = new JTextField();
-        tekstikentta.setPreferredSize(new Dimension(500, 30));
-        tekstikentta.addActionListener(kuuntelija);
-        panel.add(tekstikentta, BorderLayout.WEST);
+//        this.tekstikentta = new JTextField();
+//        tekstikentta.setPreferredSize(new Dimension(500, 30));
+//        tekstikentta.addActionListener(kuuntelija);
+//        panel.add(tekstikentta, BorderLayout.WEST);
 
-        this.ok = new JButton("OK");
-        ok.setPreferredSize(new Dimension(80, 30));
+        this.ok = new JButton("Seuraava");
+        ok.setPreferredSize(new Dimension(600, 30));
         ok.addActionListener(kuuntelija);
         panel.add(ok, BorderLayout.EAST);
 
@@ -89,4 +91,25 @@ public class Kayttoliittyma implements Runnable {
     public JFrame getFrame() {
         return frame;
     }
+
+    @Override
+    public void kaannaKorttiEsiin(int kortti) {
+        nappulat.get(kortti).setText(peli.getKortit().get(kortti).getTunnus());
+        
+        nappulat.get(kortti).setEnabled(false);
+    }
+
+    @Override
+    public void kaannaKorttiPiiloon(int kortti) {
+        nappulat.get(kortti).setText("");
+        
+        nappulat.get(kortti).setEnabled(true);
+    }
+
+    @Override
+    public void poistaKortti(int kortti) {
+        nappulat.get(kortti).setText("");
+    }
+    
+    
 }
