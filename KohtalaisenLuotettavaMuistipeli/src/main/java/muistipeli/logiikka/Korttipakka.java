@@ -6,7 +6,6 @@ import java.util.List;
 /**
  * Luo korttipakan jossa korttien tunnuksina on hienoja merkkejä.
  * 
- * @author otanttu
  */
 public class Korttipakka {
 
@@ -14,7 +13,7 @@ public class Korttipakka {
     private List<String> tunnukset;
 
     /**
-     *
+     * Luo uuden korttinpakan, jossa kortit saavat tunnuksikseen ASCII-merkkejä
      */
     public Korttipakka() {
         this.korttipakka = new ArrayList<>();
@@ -61,7 +60,7 @@ public class Korttipakka {
     
     /**
      * Palauttaa luodun korttipakan.
-     * @return korttipakka
+     * @return korttipakka Valmis korttipakka
      */
     public List<Kortti> getKorttipakka() {
         return korttipakka;

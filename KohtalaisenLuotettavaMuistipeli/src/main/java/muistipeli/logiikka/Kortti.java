@@ -20,8 +20,9 @@ public class Kortti {
     }
 
     /**
-     *
-     * @return
+     * Palauttaa kortin tunnuksena käytettävän merkin
+     * 
+     * @return Tunnusmerkki
      */
     public String getTunnus() {
         return tunnus;
@@ -34,9 +35,7 @@ public class Kortti {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.tunnus);
-        return hash;
+        return this.tunnus.hashCode();
     }
 
     @Override

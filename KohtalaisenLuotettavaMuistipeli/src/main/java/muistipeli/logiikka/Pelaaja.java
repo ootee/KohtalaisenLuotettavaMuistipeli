@@ -28,8 +28,9 @@ public class Pelaaja {
     }
 
     /**
+     * Palauttaa pelaajan nimen
      * 
-     * @return
+     * @return Pelaajan nimi
      */
     public String getNimi() {
         return nimi;
@@ -48,8 +49,9 @@ public class Pelaaja {
     }
     
     /**
+     * Palauttaa pelaajan löytämien parien määrän
      * 
-     * @return
+     * @return Parit
      */
     public int getParit() {
         return parit;
