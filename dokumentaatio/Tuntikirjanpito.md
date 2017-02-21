@@ -9,3 +9,5 @@ Päivä      |Tunnit| Kuvaus
 10.02.2017 |  2,5 | Käyttöliittymän runko, Javadoc
 14.02.2017 |  3,5 | ActionListener luotu
 17.02.2017 |   3  | ActionListenerin ihmettelyä, korttien kääntäminen toimii
+20.02.2017 |   1  | Peli-luokalle metodi, jota ActionListener käyttää
+21.02.2017 |   6  | Peli-luokan muokkaaminen nappipohjaiseen käyttöliittymään, ensimmäinen toimiva versio, JavaDocia, testejä
