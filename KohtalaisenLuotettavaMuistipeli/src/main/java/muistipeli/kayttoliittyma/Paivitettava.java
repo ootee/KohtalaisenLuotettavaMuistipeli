@@ -22,9 +22,5 @@ public interface Paivitettava {
     
     public void asetaTeksti(String teksti);
     
-    public void seuraavaEnabled();
-    
-    public void seuraavaDisabled();
-    
     public void asetaPisteet(List<Pelaaja> pelaajat);
 }

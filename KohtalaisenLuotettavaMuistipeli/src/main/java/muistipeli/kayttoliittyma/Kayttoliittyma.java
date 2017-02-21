@@ -16,7 +16,6 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     private List<JButton> nappulat;
     private JLabel viestikentta;
     private JLabel pistekentta;
-    private JButton seuraava;
     private NappuloidenKuuntelija kuuntelija;
     private Peli peli;
 
@@ -67,6 +66,7 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     }
 
     private JPanel luoNapit() {
+
         JPanel panel = new JPanel(new GridLayout(8, 8));
         this.nappulat = new ArrayList<>();
         for (int i = 0; i < 64; i++) {
@@ -76,10 +76,12 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
             nappulat.add(nappi);
             panel.add(nappi);
         }
+
         return panel;
     }
 
     private JPanel luoPistekentta() {
+
         JPanel panel = new JPanel();
 
         this.pistekentta = new JLabel();
@@ -95,6 +97,7 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
 
     @Override
     public void kaannaKorttiEsiin(int kortti) {
+
         nappulat.get(kortti).setText(peli.getKortit().get(kortti).getTunnus());
         
         nappulat.get(kortti).setEnabled(false);
@@ -102,6 +105,7 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
 
     @Override
     public void kaannaKorttiPiiloon(int kortti) {
+
         nappulat.get(kortti).setText("");
         
         nappulat.get(kortti).setEnabled(true);
@@ -116,25 +120,16 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     public void asetaTeksti(String teksti) {
         viestikentta.setText(teksti);
     }
-    
-    
-
-    @Override
-    public void seuraavaEnabled() {
-        seuraava.setEnabled(true);
-    }
-
-    @Override
-    public void seuraavaDisabled() {
-        seuraava.setEnabled(false);
-    }
 
     @Override
     public void asetaPisteet(List<Pelaaja> pelaajat) {
+
         String pisteet = "";
+
         for (Pelaaja pelaaja : pelaajat) {
             pisteet += pelaaja + "    ";
         }
+
         pistekentta.setText(pisteet);
     }
     
