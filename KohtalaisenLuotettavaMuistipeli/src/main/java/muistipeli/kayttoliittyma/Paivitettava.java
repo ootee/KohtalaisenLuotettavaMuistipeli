@@ -5,6 +5,9 @@
  */
 package muistipeli.kayttoliittyma;
 
+import java.util.List;
+import muistipeli.logiikka.Pelaaja;
+
 /**
  *
  * @author otanttu
@@ -22,4 +25,6 @@ public interface Paivitettava {
     public void seuraavaEnabled();
     
     public void seuraavaDisabled();
+    
+    public void asetaPisteet(List<Pelaaja> pelaajat);
 }

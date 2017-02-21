@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.*;
 import javax.swing.*;
+import muistipeli.logiikka.Pelaaja;
 import muistipeli.logiikka.Peli;
 
 public class Kayttoliittyma implements Runnable, Paivitettava {
@@ -14,7 +15,7 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     private JFrame frame;
     private List<JButton> nappulat;
     private JLabel viestikentta;
-    private JTextField pistekentta;
+    private JLabel pistekentta;
     private JButton seuraava;
     private NappuloidenKuuntelija kuuntelija;
     private Peli peli;
@@ -45,18 +46,24 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     }
 
     private void luoKomponentit(Container container) {
-        this.kuuntelija = new NappuloidenKuuntelija(nappulat, viestikentta, pistekentta, seuraava, frame, peli);
+        this.kuuntelija = new NappuloidenKuuntelija(nappulat, peli);
 
-        this.viestikentta = new JLabel();
-        
-        viestikentta.setPreferredSize(new Dimension(600, 50));
-        
-        container.add(viestikentta, BorderLayout.NORTH);
+        container.add(luoViestikentta(), BorderLayout.NORTH);
 
         container.add(luoPistekentta(), BorderLayout.SOUTH);
 
         container.add(luoNapit(), BorderLayout.CENTER);
 
+    }
+    
+    private JPanel luoViestikentta() {
+        JPanel panel = new JPanel();
+        
+        this.viestikentta = new JLabel();
+        viestikentta.setPreferredSize(new Dimension(580, 15));
+        panel.add(viestikentta);
+        
+        return panel;
     }
 
     private JPanel luoNapit() {
@@ -75,16 +82,9 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     private JPanel luoPistekentta() {
         JPanel panel = new JPanel();
 
-        this.pistekentta = new JTextField();
-        pistekentta.setPreferredSize(new Dimension(500, 30));
-        pistekentta.addActionListener(kuuntelija);
-        panel.add(pistekentta, BorderLayout.WEST);
-
-//        this.seuraava = new JButton("Seuraava");
-//        seuraava.setEnabled(false);
-//        seuraava.setPreferredSize(new Dimension(600, 30));
-//        seuraava.addActionListener(kuuntelija);
-//        panel.add(seuraava, BorderLayout.EAST);
+        this.pistekentta = new JLabel();
+        pistekentta.setPreferredSize(new Dimension(580, 15));
+        panel.add(pistekentta);
 
         return panel;
     }
@@ -116,6 +116,8 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     public void asetaTeksti(String teksti) {
         viestikentta.setText(teksti);
     }
+    
+    
 
     @Override
     public void seuraavaEnabled() {
@@ -125,6 +127,15 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     @Override
     public void seuraavaDisabled() {
         seuraava.setEnabled(false);
+    }
+
+    @Override
+    public void asetaPisteet(List<Pelaaja> pelaajat) {
+        String pisteet = "";
+        for (Pelaaja pelaaja : pelaajat) {
+            pisteet += pelaaja + "    ";
+        }
+        pistekentta.setText(pisteet);
     }
     
     

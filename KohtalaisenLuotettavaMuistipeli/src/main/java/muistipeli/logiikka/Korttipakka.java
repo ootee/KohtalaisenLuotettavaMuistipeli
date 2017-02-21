@@ -39,7 +39,6 @@ public class Korttipakka {
         tunnukset.add("◄");
         tunnukset.add("▲");
         tunnukset.add("▼");
-        tunnukset.add("¶");
         tunnukset.add("§");
         tunnukset.add("£");
         tunnukset.add("$");

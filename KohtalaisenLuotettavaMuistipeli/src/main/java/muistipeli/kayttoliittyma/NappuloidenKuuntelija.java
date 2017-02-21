@@ -23,17 +23,9 @@ public class NappuloidenKuuntelija implements ActionListener {
 
     private Peli peli;
     private List<JButton> nappulat;
-    private JLabel viestikentta;
-    private JTextField tekstikentta;
-    private JButton seuraava;
-    private JFrame frame;
 
-    public NappuloidenKuuntelija(List<JButton> nappulat, JLabel viestikentta, JTextField tekstikentta, JButton ok, JFrame frame, Peli peli) {
+    public NappuloidenKuuntelija(List<JButton> nappulat, Peli peli) {
         this.nappulat = nappulat;
-        this.viestikentta = viestikentta;
-        this.tekstikentta = tekstikentta;
-        this.seuraava = ok;
-        this.frame = frame;
         this.peli = peli;
     }
 

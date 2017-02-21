@@ -28,11 +28,10 @@ public class Peli {
      * Alustaa pelin.
      */
     public Peli() {
-        this.lukija = new Scanner(System.in);
         this.pelaajat = new ArrayList<>();
         this.loydetyt = new ArrayList<>();
         this.vuoro = 0;
-        this.parejaJaljella = 32;
+        this.parejaJaljella = 31;
         this.korttipakka = new Korttipakka();
         this.kortit = korttipakka.getKorttipakka();
 
@@ -74,22 +73,35 @@ public class Peli {
             tokanIndeksi = indeksi;
             tokaKortti = valitseKortti(tokanIndeksi);
             paivitettava.kaannaKorttiEsiin(tokanIndeksi);
-            if (ekaKortti.equals(tokaKortti)) {
+            if (ekaKortti.equals(tokaKortti) && parejaOnVielaJaljella()) {
                 vuorossaOleva().loysiParin();
                 pariLoydetty();
                 paivitettava.asetaTeksti("Hyvä " + vuorossaOleva().getNimi() + ", löysit parin!");
+                loydetyt.add(ekaKortti);
+                loydetyt.add(tokaKortti);
+                paivitettava.asetaPisteet(pelaajat);
+            } else if (parejaOnVielaJaljella()) {
+                paivitettava.asetaTeksti("Ei paria, parempi tuuri ensi vuorolla. Paina mitä tahansa nappulaa.");
             } else {
-                paivitettava.asetaTeksti("Ei paria, parempi tuuri ensi vuorolla.");
+                vuorossaOleva().loysiParin();
+                paivitettava.asetaPisteet(pelaajat);
+                paivitettava.asetaTeksti("Peli loppui, onnea voittajalle!");
             }
         } else {
-            paivitettava.kaannaKorttiPiiloon(ekanIndeksi);
-            paivitettava.kaannaKorttiPiiloon(tokanIndeksi);
+            if (ekaKortti.equals(tokaKortti)) {
+                paivitettava.poistaKortti(ekanIndeksi);
+                paivitettava.poistaKortti(tokanIndeksi);
+            } else {
+                paivitettava.kaannaKorttiPiiloon(ekanIndeksi);
+                paivitettava.kaannaKorttiPiiloon(tokanIndeksi);
+            }
             ekaKortti = null;
             tokaKortti = null;
             ekanIndeksi = -1;
             tokanIndeksi = -1;
             vuoro++;
             paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse ensimmäinen kortti.");
+
         }
     }
 
@@ -101,41 +113,7 @@ public class Peli {
         lisaaPelaaja("Pelaaja 1");
         lisaaPelaaja("Pelaaja 2");
         paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse ensimmäinen kortti.");
-//        while (parejaOnVielaJaljella()) {
-//            
-//
-//        }
-//            System.out.println("Vuorossa: " + vuorossaOleva().getNimi());
-//            System.out.println("");
-//
-//            System.out.print("Valitse ensimmäinen kortti. ");
-//            int kortti1 = Integer.parseInt(lukija.nextLine());
-//            System.out.println(kortit.get(kortti1));
-//
-//            System.out.print("Valitse toinen kortti. ");
-//            int kortti2 = Integer.parseInt(lukija.nextLine());
-//            System.out.println(kortit.get(kortti2));
-//
-//            if (kortit.get(kortti1).equals(kortit.get(kortti2))) {
-//                vuorossaOleva().loysiParin();
-//
-//                System.out.println("Hyvä " + vuorossaOleva().getNimi() + ", löysit parin.");
-//                System.out.println("Sinulla on " + vuorossaOleva().pareja());
-//
-//                parejaJaljella--;
-//                
-//                loydetyt.add(kortit.get(kortti1));
-//                
-//                System.out.println("Pareja jäljellä " + parejaJaljella);
-//            }
-//            vuoro++;
-//
-//        }
-//        
-//        System.out.println("Peli loppu.");
-//        for (Pelaaja p : pelaajat) {
-//            System.out.println(p);
-//        }
+        paivitettava.asetaPisteet(pelaajat);
     }
 
     public Kortti valitseKortti(int indeksi) {
