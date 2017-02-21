@@ -26,7 +26,7 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Kohtalaisen luotettava muistipeli");
-        Dimension d = new Dimension(600, 700);
+        Dimension d = new Dimension(600, 650);
         frame.setResizable(false);
         frame.setPreferredSize(d);
 
@@ -47,11 +47,11 @@ public class Kayttoliittyma implements Runnable {
 
         this.viestikentta = new JLabel("Tähän tulee ohjelman antamat viestit.");
         
-        viestikentta.setPreferredSize(new Dimension(600, 30));
+        viestikentta.setPreferredSize(new Dimension(600, 50));
         
         container.add(viestikentta, BorderLayout.NORTH);
 
-        container.add(luoTekstikentta(), BorderLayout.SOUTH);
+//        container.add(luoTekstikentta(), BorderLayout.SOUTH);
 
         container.add(luoNapit(), BorderLayout.CENTER);
 
@@ -62,7 +62,7 @@ public class Kayttoliittyma implements Runnable {
         this.nappulat = new ArrayList<>();
         for (int i = 0; i < 64; i++) {
             JButton nappi = new JButton();
-            nappi.setFont(new Font("Sans-Serif", Font.PLAIN, 40));
+            nappi.setFont(new Font("Arial", Font.PLAIN, 35));
             nappi.addActionListener(kuuntelija);
             nappulat.add(nappi);
             panel.add(nappi);
