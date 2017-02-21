@@ -9,13 +9,13 @@ import java.util.*;
 import javax.swing.*;
 import muistipeli.logiikka.Peli;
 
-public class Kayttoliittyma implements Runnable, Kaannettava {
+public class Kayttoliittyma implements Runnable, Paivitettava {
 
     private JFrame frame;
     private List<JButton> nappulat;
     private JLabel viestikentta;
-    private JTextField tekstikentta;
-    private JButton ok;
+    private JTextField pistekentta;
+    private JButton seuraava;
     private NappuloidenKuuntelija kuuntelija;
     private Peli peli;
 
@@ -39,21 +39,21 @@ public class Kayttoliittyma implements Runnable, Kaannettava {
         
         kuuntelija.setNappulat(nappulat);
         
-        peli.setKaannettava(this);
+        peli.setPaivitettava(this);
         
         peli.pelaa();
     }
 
     private void luoKomponentit(Container container) {
-        this.kuuntelija = new NappuloidenKuuntelija(nappulat, viestikentta, tekstikentta, ok, frame, peli);
+        this.kuuntelija = new NappuloidenKuuntelija(nappulat, viestikentta, pistekentta, seuraava, frame, peli);
 
-        this.viestikentta = new JLabel("Tähän tulee ohjelman antamat viestit.");
+        this.viestikentta = new JLabel();
         
         viestikentta.setPreferredSize(new Dimension(600, 50));
         
         container.add(viestikentta, BorderLayout.NORTH);
 
-//        container.add(luoTekstikentta(), BorderLayout.SOUTH);
+        container.add(luoPistekentta(), BorderLayout.SOUTH);
 
         container.add(luoNapit(), BorderLayout.CENTER);
 
@@ -72,18 +72,19 @@ public class Kayttoliittyma implements Runnable, Kaannettava {
         return panel;
     }
 
-    private JPanel luoTekstikentta() {
+    private JPanel luoPistekentta() {
         JPanel panel = new JPanel();
 
-//        this.tekstikentta = new JTextField();
-//        tekstikentta.setPreferredSize(new Dimension(500, 30));
-//        tekstikentta.addActionListener(kuuntelija);
-//        panel.add(tekstikentta, BorderLayout.WEST);
+        this.pistekentta = new JTextField();
+        pistekentta.setPreferredSize(new Dimension(500, 30));
+        pistekentta.addActionListener(kuuntelija);
+        panel.add(pistekentta, BorderLayout.WEST);
 
-        this.ok = new JButton("Seuraava");
-        ok.setPreferredSize(new Dimension(600, 30));
-        ok.addActionListener(kuuntelija);
-        panel.add(ok, BorderLayout.EAST);
+//        this.seuraava = new JButton("Seuraava");
+//        seuraava.setEnabled(false);
+//        seuraava.setPreferredSize(new Dimension(600, 30));
+//        seuraava.addActionListener(kuuntelija);
+//        panel.add(seuraava, BorderLayout.EAST);
 
         return panel;
     }
@@ -109,6 +110,21 @@ public class Kayttoliittyma implements Runnable, Kaannettava {
     @Override
     public void poistaKortti(int kortti) {
         nappulat.get(kortti).setText("");
+    }
+
+    @Override
+    public void asetaTeksti(String teksti) {
+        viestikentta.setText(teksti);
+    }
+
+    @Override
+    public void seuraavaEnabled() {
+        seuraava.setEnabled(true);
+    }
+
+    @Override
+    public void seuraavaDisabled() {
+        seuraava.setEnabled(false);
     }
     
     

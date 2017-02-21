@@ -25,24 +25,22 @@ public class NappuloidenKuuntelija implements ActionListener {
     private List<JButton> nappulat;
     private JLabel viestikentta;
     private JTextField tekstikentta;
-    private JButton ok;
+    private JButton seuraava;
     private JFrame frame;
 
     public NappuloidenKuuntelija(List<JButton> nappulat, JLabel viestikentta, JTextField tekstikentta, JButton ok, JFrame frame, Peli peli) {
         this.nappulat = nappulat;
         this.viestikentta = viestikentta;
         this.tekstikentta = tekstikentta;
-        this.ok = ok;
+        this.seuraava = ok;
         this.frame = frame;
         this.peli = peli;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        int kortti = nappulat.indexOf(e.getSource());
-        
-        peli.kaannaKortti(kortti);
+                int namiska = nappulat.indexOf(e.getSource());
+                peli.kaannaKortti(namiska);
     }
 
     public void setNappulat(List<JButton> nappulat) {

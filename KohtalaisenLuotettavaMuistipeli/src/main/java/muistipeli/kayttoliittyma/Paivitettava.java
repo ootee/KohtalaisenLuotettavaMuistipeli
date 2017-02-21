@@ -9,7 +9,7 @@ package muistipeli.kayttoliittyma;
  *
  * @author otanttu
  */
-public interface Kaannettava {
+public interface Paivitettava {
     
     public void kaannaKorttiEsiin(int kortti);
     
@@ -17,4 +17,9 @@ public interface Kaannettava {
     
     public void poistaKortti(int kortti);
     
+    public void asetaTeksti(String teksti);
+    
+    public void seuraavaEnabled();
+    
+    public void seuraavaDisabled();
 }
