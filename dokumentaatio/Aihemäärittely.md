@@ -22,3 +22,10 @@ Kun jokainen pelaaja on saanut vuorollaan kääntää kortit, ennen kuin seuraav
 **Luokkakaavio**
 
 ![Luokkakaavio](Luokkakaavio.png)
+
+**Sekvenssikaaviot**
+Pelaaja valitsee ensimmäisen kortin
+![Sekvenssikaavio1](sekvenssi1.png)
+
+Pelaaja valitsee toisen kortin ja löytää parin
+![Sekvenssikaavio2](sekvenssi2.png)
