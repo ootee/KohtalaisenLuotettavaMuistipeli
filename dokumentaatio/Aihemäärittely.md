@@ -2,9 +2,9 @@
 
 **Aihemäärittely**
 
-Toteutetaan muistipeli, jossa lisää vaikeutta tuo satunnainen korttien paikan vaihtuminen. Peliä voi pelata 2 henkilöä ja korttien paikkajon vaihtaminen tapahtuu aina täyden kierroksen jälkeen.
+Toteutetaan muistipeli, jossa lisää vaikeutta tuo satunnainen korttien paikan vaihtuminen. Peliä voi pelata 2 henkilöä ja korttien paikkojen vaihtaminen tapahtuu aina täyden kierroksen jälkeen.
 
-Pelissä käytetään 32 korttiparia, jotka on järjestetty 8 x 8 ruudukkoon. Alustavasti suunnitelmana on käyttää korttien kuvitukseen ascii-merkkijonoa, mutta ajan salliessa myös grafiikan toteuttaminen voi tulla kyseeseen.
+Pelissä käytetään 32 korttiparia, jotka on järjestetty 8 x 8 ruudukkoon. Korttien kuvitukseen käytetään ascii-merkkejä.
 
 **Pelin säännöt**
 
