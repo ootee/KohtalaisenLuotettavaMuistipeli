@@ -24,6 +24,7 @@ Kun jokainen pelaaja on saanut vuorollaan kääntää kortit, ennen kuin seuraav
 ![Luokkakaavio](Luokkakaavio.png)
 
 **Sekvenssikaaviot**
+
 Pelaaja valitsee ensimmäisen kortin
 ![Sekvenssikaavio1](sekvenssi1.png)
 
