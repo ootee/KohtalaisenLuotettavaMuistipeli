@@ -13,7 +13,7 @@ public class Korttipakka {
     private List<String> tunnukset;
 
     /**
-     * Luo uuden korttinpakan, jossa kortit saavat tunnuksikseen ASCII-merkkejä
+     * Luo uuden korttinpakan, jossa kortit saavat tunnuksikseen ASCII-merkkejä.
      */
     public Korttipakka() {
         this.korttipakka = new ArrayList<>();

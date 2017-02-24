@@ -16,8 +16,7 @@ import muistipeli.logiikka.Kortti;
 import muistipeli.logiikka.Peli;
 
 /**
- * Tapahtumankuuntelija nappuloiden painalluksille
- * 
+ * Tapahtumankuuntelija nappuloiden painalluksille.
  */
 public class NappuloidenKuuntelija implements ActionListener {
 
@@ -25,8 +24,7 @@ public class NappuloidenKuuntelija implements ActionListener {
     private List<JButton> nappulat;
 
     /**
-     * Luo uuden tapahtumakuuntelijan
-     * 
+     * Luo uuden tapahtumakuuntelijan, joka kuuntelee pelikentän nappuloita.
      * @param nappulat Käyttliittymän nappulat
      * @param peli Muistipeli-olio
      */
@@ -41,11 +39,6 @@ public class NappuloidenKuuntelija implements ActionListener {
         peli.kaannaKortti(namiska);
     }
 
-    /**
-     * Asettaa kuuntelijalle käytettävät nappulat
-     * 
-     * @param nappulat Lista pelissä käytettävistä nappuloista
-     */
     public void setNappulat(List<JButton> nappulat) {
         this.nappulat = nappulat;
     }

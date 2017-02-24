@@ -11,7 +11,7 @@ import muistipeli.logiikka.Pelaaja;
 import muistipeli.logiikka.Peli;
 
 /**
- * Luo pelissä käytettävän peliaslusta ja siihen napit ja viestikentät
+ * Luo pelissä käytettävän peliaslusta ja siihen napit ja viestikentät.
  */
 public class Kayttoliittyma implements Runnable, Paivitettava {
 
@@ -23,7 +23,7 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     private Peli peli;
 
     /**
-     * Luo uuden käyttöliittymän joka saa parametrikseen peliolion
+     * Luo uuden käyttöliittymän, joka saa parametrikseen peliolion.
      * @param peli Muistipeli
      */
     public Kayttoliittyma(Peli peli) {
@@ -98,11 +98,6 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
         return panel;
     }
 
-    /**
-     * Palauttaa käyttöliittymän kehyksen
-     * 
-     * @return Kehys
-     */
     public JFrame getFrame() {
         return frame;
     }
@@ -144,6 +139,4 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
 
         pistekentta.setText(pisteet);
     }
-    
-    
 }

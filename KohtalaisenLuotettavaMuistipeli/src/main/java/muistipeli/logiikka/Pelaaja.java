@@ -1,17 +1,17 @@
-
 package muistipeli.logiikka;
 
 /**
  * Luokka tarjoaa pelissä käytettävät pelaajaoliot.
- * 
+ *
  */
 public class Pelaaja {
+
     private String nimi;
     private int parit;
 
     /**
      * Luo pelaajaolion, jolla on 0 löydettyä paria.
-     * 
+     *
      * @param nimi pelaajan nimi
      */
     public Pelaaja(String nimi) {
@@ -28,17 +28,17 @@ public class Pelaaja {
     }
 
     /**
-     * Palauttaa pelaajan nimen
-     * 
+     * Palauttaa pelaajan nimen.
+     *
      * @return Pelaajan nimi
      */
     public String getNimi() {
         return nimi;
     }
-    
+
     /**
      * Palauttaa pelaajan löytämät parit merkkijonoesityksenä.
-     * 
+     *
      * @return parit merkkijonona
      */
     public String pareja() {
@@ -47,12 +47,7 @@ public class Pelaaja {
         }
         return "Sinulla on " + parit + " paria.";
     }
-    
-    /**
-     * Palauttaa pelaajan löytämien parien määrän
-     * 
-     * @return Parit
-     */
+
     public int getParit() {
         return parit;
     }
@@ -63,10 +58,4 @@ public class Pelaaja {
     public void loysiParin() {
         parit++;
     }
-    
-    
-    
-    
-    
-    
 }

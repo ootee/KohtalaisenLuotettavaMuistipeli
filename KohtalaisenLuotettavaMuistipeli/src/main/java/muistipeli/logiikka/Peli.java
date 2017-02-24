@@ -33,14 +33,10 @@ public class Peli {
         this.parejaJaljella = 31;
         this.korttipakka = new Korttipakka();
         this.kortit = korttipakka.getKorttipakka();
-
     }
 
     /**
-     * Luo pelissä käytettävät kortit ja asettaa niille tunnukset.
-     */
-    /**
-     * Lisää pelaajan pelaajalistaan
+     * Lisää pelaajan pelaajalistaan.
      *
      * @param nimi Pelaajan nimi
      */
@@ -54,74 +50,111 @@ public class Peli {
      * @return onko löytämättömiä pareja jäljellä
      */
     public boolean parejaOnVielaJaljella() {
-
         return parejaJaljella != 0;
     }
 
     /**
-     * Kääntää kortit esiin ja piiloon ja vertailee ovatko ne samat
-     * 
+     * Kääntää kortit ja toteuttaa pelivuoron kulun.
+     *
      * @param indeksi Käännettävän kortin indeksi listalla
      */
     public void kaannaKortti(int indeksi) {
         if (ekaKortti == null) {
-            ekanIndeksi = indeksi;
-            ekaKortti = valitseKortti(ekanIndeksi);
-            paivitettava.kaannaKorttiEsiin(ekanIndeksi);
-            paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse toinen kortti.");
-
+            kaannaEnsimmainenKortti(indeksi);
         } else if (tokaKortti == null) {
-
-            tokanIndeksi = indeksi;
-            tokaKortti = valitseKortti(tokanIndeksi);
-            paivitettava.kaannaKorttiEsiin(tokanIndeksi);
-
+            kaannaToinenKortti(indeksi);
             if (ekaKortti.equals(tokaKortti) && parejaOnVielaJaljella()) {
-
-                vuorossaOleva().loysiParin();
-                pariLoydetty();
-                paivitettava.asetaTeksti("Hyvä " + vuorossaOleva().getNimi() + ", löysit parin! Saat jatkaa, paina mitä tahansa näppäintä.");
-                loydetyt.add(ekaKortti);
-                loydetyt.add(tokaKortti);
-                paivitettava.asetaPisteet(pelaajat);
-
+                kortitOlivatPari();
             } else if (parejaOnVielaJaljella()) {
-
                 paivitettava.asetaTeksti("Ei paria, parempi tuuri ensi vuorolla. Paina mitä tahansa nappulaa.");
-
             } else {
-
-                vuorossaOleva().loysiParin();
-                paivitettava.asetaPisteet(pelaajat);
-                paivitettava.asetaTeksti("Peli loppui, onnea voittajalle!");
+                peliLoppu();
             }
-
+        } else if (ekaKortti.equals(tokaKortti)) {
+            poistaKortit();
+            nollaaLoydetytKortitJaIndeksit();
         } else {
-
-            if (ekaKortti.equals(tokaKortti)) {
-                paivitettava.poistaKortti(ekanIndeksi);
-                paivitettava.poistaKortti(tokanIndeksi);
-                paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse ensimmäinen kortti.");
-                
-
-            } else {
-
-                paivitettava.kaannaKorttiPiiloon(ekanIndeksi);
-                paivitettava.kaannaKorttiPiiloon(tokanIndeksi);
-                vuoronLoppu();
-                paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse ensimmäinen kortti.");
-            }
-
-            ekaKortti = null;
-            tokaKortti = null;
-            ekanIndeksi = -1;
-            tokanIndeksi = -1;
-
+            vuoronLoppu();
+            nollaaLoydetytKortitJaIndeksit();
         }
     }
 
     /**
-     * Sekoittaa kortit, luo pelaajat ja alustaa viestikentät
+     * Pelin loppumetodi.
+     */
+    public void peliLoppu() {
+        vuorossaOleva().loysiParin();
+        paivitettava.asetaPisteet(pelaajat);
+        paivitettava.asetaTeksti("Peli loppui, onnea voittajalle!");
+    }
+
+    /**
+     * Kääntää ensimmäisen kortin.
+     *
+     * @param indeksi käännettävän kortin indeksi
+     */
+    public void kaannaEnsimmainenKortti(int indeksi) {
+        ekanIndeksi = indeksi;
+        ekaKortti = valitseKortti(indeksi);
+        paivitettava.kaannaKorttiEsiin(ekanIndeksi);
+        paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse toinen kortti.");
+    }
+
+    /**
+     * Kääntää toisen kortin.
+     *
+     * @param indeksi käännettävän kortin indeksi
+     */
+    public void kaannaToinenKortti(int indeksi) {
+        tokanIndeksi = indeksi;
+        tokaKortti = valitseKortti(indeksi);
+        paivitettava.kaannaKorttiEsiin(tokanIndeksi);
+    }
+
+    /**
+     * Merkitsee löydetyt kortit, lisää pelaajalle pisteet ja jatkaa vuoroa.
+     */
+    public void kortitOlivatPari() {
+        vuorossaOleva().loysiParin();
+        pariLoydetty();
+        paivitettava.asetaTeksti("Hyvä " + vuorossaOleva().getNimi() + ", löysit parin! Saat jatkaa, paina mitä tahansa näppäintä.");
+        loydetyt.add(ekaKortti);
+        loydetyt.add(tokaKortti);
+        paivitettava.asetaPisteet(pelaajat);
+    }
+
+    /**
+     * Kasvattaa vuoro-muuttujan arvoa yhdellä ja kääntää kortit piiloon vuoron
+     * päätteeksi.
+     */
+    public void vuoronLoppu() {
+        vuoro++;
+        paivitettava.kaannaKorttiPiiloon(ekanIndeksi);
+        paivitettava.kaannaKorttiPiiloon(tokanIndeksi);
+        paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse ensimmäinen kortti.");
+    }
+
+    /**
+     * Asettaa kahden kortin kääntmisen jälkeen kortti ja indeksi muuttujat takaisin alkuarvoihinsa.
+     */
+    public void nollaaLoydetytKortitJaIndeksit() {
+        ekaKortti = null;
+        tokaKortti = null;
+        ekanIndeksi = -1;
+        tokanIndeksi = -1;
+    }
+
+    /**
+     * Poistaa löydetyt kortit pelistä.
+     */
+    public void poistaKortit() {
+        paivitettava.poistaKortti(ekanIndeksi);
+        paivitettava.poistaKortti(tokanIndeksi);
+        paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse ensimmäinen kortti.");
+    }
+
+    /**
+     * Sekoittaa kortit, luo pelaajat ja alustaa viestikentät.
      */
     public void pelaa() {
         Collections.shuffle(kortit);
@@ -132,8 +165,8 @@ public class Peli {
     }
 
     /**
-     * Valitsee kortin
-     * 
+     * Valitsee kortin.
+     *
      * @param indeksi Kortin indeksi listalla
      * @return Palauttaa listalta valitun kortin
      */
@@ -142,79 +175,43 @@ public class Peli {
     }
 
     /**
-     * Vähentää jäljellä olevien parien muuttujan arvoa yhdellä
+     * Vähentää jäljellä olevien parien muuttujan arvoa yhdellä.
      */
     public void pariLoydetty() {
         this.parejaJaljella--;
     }
 
     /**
-     * Palauttaa vuorossa olevan pelaajaolion
+     * Palauttaa vuorossa olevan pelaajaolion.
+     *
      * @return Pelaajaolio
      */
     public Pelaaja vuorossaOleva() {
         return pelaajat.get(vuoro % pelaajat.size());
     }
 
-    /**
-     * Palauttaa listan kaikista pelissä olevista korteista.
-     *
-     * @return lista pelin korteista
-     */
     public List<Kortti> getKortit() {
         return kortit;
     }
 
-    /**
-     * Palauttaa listan pelaajista
-     * 
-     * @return lista pelaajista
-     */
     public List<Pelaaja> getPelaajat() {
         return pelaajat;
     }
 
-    /**
-     * Asettaa käyttöliitymän komponenttien muokkaamiseen tarvittavan rajapinnan
-     *
-     * @param paivitettava Käyttöliittymä
-     */
     public void setPaivitettava(Paivitettava paivitettava) {
         this.paivitettava = paivitettava;
     }
 
-    /**
-     * Palauttaa vuorolla ensimmäiseksi valitun kortin
-     * 
-     * @return Kortti
-     */
     public Kortti getEkaKortti() {
         return ekaKortti;
     }
 
-    /**
-     * Palauttaa vuorolla toisena valitun kortin
-     * 
-     * @return Kortti
-     */
     public Kortti getTokaKortti() {
         return tokaKortti;
     }
 
-    /**
-     * Asettaa pelissä käytettävät kortit testejä varten
-     * 
-     * @param kortit Lista korttiolioista
-     */
     public void setKortit(List<Kortti> kortit) {
         this.kortit = kortit;
     }
-    
-    /**
-     * Kasvattaa vuoro-muuttujan arvoa yhdellä vuoron päätteeksi
-     */
-    public void vuoronLoppu() {
-        vuoro++;
-    } 
-    
+
 }

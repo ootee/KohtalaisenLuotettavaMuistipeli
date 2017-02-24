@@ -12,7 +12,6 @@ public class Kortti {
 
     /**
      * Luo korttiolion, joka saa tununksekseen parametrina annetun merkkijonon.
-     * 
      * @param tunnus kortin tunnus
      */
     public Kortti(String tunnus) {
@@ -20,9 +19,8 @@ public class Kortti {
     }
 
     /**
-     * Palauttaa kortin tunnuksena käytettävän merkin
-     * 
-     * @return Tunnusmerkki
+     * Palauttaa kortin tunnuksena käytettävän merkin.
+     * @return kortin tunnus
      */
     public String getTunnus() {
         return tunnus;
