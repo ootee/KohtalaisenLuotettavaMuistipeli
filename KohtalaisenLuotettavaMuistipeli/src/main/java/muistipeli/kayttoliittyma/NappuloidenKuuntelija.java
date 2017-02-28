@@ -15,19 +15,11 @@ import javax.swing.JTextField;
 import muistipeli.logiikka.Kortti;
 import muistipeli.logiikka.Peli;
 
-/**
- * Tapahtumankuuntelija nappuloiden painalluksille.
- */
 public class NappuloidenKuuntelija implements ActionListener {
 
     private Peli peli;
     private List<JButton> nappulat;
 
-    /**
-     * Luo uuden tapahtumakuuntelijan, joka kuuntelee pelikentän nappuloita.
-     * @param nappulat Käyttliittymän nappulat
-     * @param peli Muistipeli-olio
-     */
     public NappuloidenKuuntelija(List<JButton> nappulat, Peli peli) {
         this.nappulat = nappulat;
         this.peli = peli;
