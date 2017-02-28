@@ -11,3 +11,4 @@ Päivä      |Tunnit| Kuvaus
 17.02.2017 |   3  | ActionListenerin ihmettelyä, korttien kääntäminen toimii
 20.02.2017 |   1  | Peli-luokalle metodi, jota ActionListener käyttää
 21.02.2017 |   6  | Peli-luokan muokkaaminen nappipohjaiseen käyttöliittymään, ensimmäinen toimiva versio, JavaDocia, testejä
+24.02.2017 |   2  | Sekvenssikaaviot, peli-luokan refaktorointi, jar, rakennekuvaus, käyttöohje, javadoc
