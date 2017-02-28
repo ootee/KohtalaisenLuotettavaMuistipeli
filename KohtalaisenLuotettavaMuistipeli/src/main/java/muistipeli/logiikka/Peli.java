@@ -135,7 +135,9 @@ public class Peli {
         vuoro++;
         paivitettava.kaannaKorttiPiiloon(ekanIndeksi);
         paivitettava.kaannaKorttiPiiloon(tokanIndeksi);
+        //Kommentoi vaihtaja rivi pois, jos haluat pelata ilman korttien vaihtumista
         vaihtaja.vaihdaKortit(kortit, loydetyt, random);
+        
         paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse ensimmäinen kortti.");
     }
 
