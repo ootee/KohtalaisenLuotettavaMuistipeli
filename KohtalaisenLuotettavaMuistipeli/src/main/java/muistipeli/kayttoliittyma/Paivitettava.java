@@ -6,6 +6,8 @@
 package muistipeli.kayttoliittyma;
 
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import muistipeli.logiikka.Pelaaja;
 
 public interface Paivitettava {
@@ -19,4 +21,10 @@ public interface Paivitettava {
     public void asetaTeksti(String teksti);
     
     public void asetaPisteet(List<Pelaaja> pelaajat);
+    
+    public JLabel getViestikentta();
+    
+    public JLabel getPistekentta();
+    
+    public List<JButton> getNappulat();
 }

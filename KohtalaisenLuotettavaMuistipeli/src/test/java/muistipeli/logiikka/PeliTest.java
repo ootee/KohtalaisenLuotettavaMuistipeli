@@ -25,6 +25,7 @@ public class PeliTest {
         this.kali = new Kayttoliittyma(p);
         kali.run();
         p.setPaivitettava(kali);
+
     }
 
     @Test
@@ -47,12 +48,8 @@ public class PeliTest {
 
     @Test
     public void testPelaa() {
-        List<Kortti> kortit = new ArrayList<>();
-        kortit.add(new Kortti("A"));
-        kortit.add(new Kortti("B"));
-        p.setKortit(kortit);
-        p.kaannaKortti(0);
-        assertEquals("A", p.getEkaKortti().getTunnus());
+        assertEquals("Vuorossa Pelaaja 1, valitse ensimmäinen kortti.", kali.getViestikentta().getText());
+        assertEquals("Pelaaja 1: 0 paria    Pelaaja 2: 0 paria    ", kali.getPistekentta().getText());
     }
 
     @Test
@@ -60,6 +57,8 @@ public class PeliTest {
         List<Kortti> kortit = new ArrayList<>();
         kortit.add(new Kortti("A"));
         kortit.add(new Kortti("B"));
+        kortit.add(new Kortti("C"));
+        kortit.add(new Kortti("D"));
         p.setKortit(kortit);
         p.kaannaKortti(0);
         p.kaannaKortti(1);
@@ -73,6 +72,12 @@ public class PeliTest {
 
     @Test
     public void testVuorossaOleva2() {
+        List<Kortti> kortit = new ArrayList<>();
+        kortit.add(new Kortti("A"));
+        kortit.add(new Kortti("B"));
+        kortit.add(new Kortti("C"));
+        kortit.add(new Kortti("D"));
+        List<Kortti> loydetyt = new ArrayList<>();
         p.vuoronLoppu();
         assertEquals("Pelaaja 2", p.vuorossaOleva().getNimi());
     }
@@ -80,12 +85,20 @@ public class PeliTest {
     @Test
     public void testParinLoytaminenToimii() {
         List<Kortti> kortit = new ArrayList<>();
+        List<Kortti> loydetyt = new ArrayList<>();
         kortit.add(new Kortti("A"));
         kortit.add(new Kortti("A"));
+        kortit.add(new Kortti("C"));
+        kortit.add(new Kortti("D"));
+        kortit.add(new Kortti("E"));
+        kortit.add(new Kortti("F"));
         p.setKortit(kortit);
         p.kaannaKortti(0);
         p.kaannaKortti(1);
+        p.vuoronLoppu();
         assertEquals(1, p.getPelaajat().get(0).getParit());
+        assertEquals("", kali.getNappulat().get(0).getText());
+        assertEquals("", kali.getNappulat().get(1).getText());
     }
 
     @Test
@@ -109,4 +122,87 @@ public class PeliTest {
         assertEquals(3, p.getPelaajat().get(0).getParit());
     }
 
+    @Test
+    public void testParinEiLoytaminenToimii() {
+        List<Kortti> kortit = new ArrayList<>();
+        kortit.add(new Kortti("A"));
+        kortit.add(new Kortti("B"));
+        kortit.add(new Kortti("C"));
+        kortit.add(new Kortti("D"));
+        p.kaannaKortti(0);
+        p.kaannaKortti(1);
+        assertEquals("Ei paria, parempi tuuri ensi vuorolla. Paina mitä tahansa nappulaa.", kali.getViestikentta().getText());
+    }
+
+    @Test
+    public void testVuoronLoppu() {
+        List<Kortti> kortit = new ArrayList<>();
+        List<Kortti> loydetyt = new ArrayList<>();
+        kortit.add(new Kortti("A"));
+        kortit.add(new Kortti("B"));
+        kortit.add(new Kortti("C"));
+        kortit.add(new Kortti("D"));
+        p.kaannaKortti(0);
+        p.kaannaKortti(1);
+        p.vuoronLoppu();
+        assertEquals(1, p.getVuoro());
+        assertEquals("Vuorossa Pelaaja 2, valitse ensimmäinen kortti.", kali.getViestikentta().getText());
+
+    }
+
+    @Test
+    public void testEkanJaTokanSetteritJaGetterit() {
+        p.setEkaKortti(new Kortti("A"));
+        p.setTokaKortti(new Kortti("B"));
+        assertEquals("A", p.getEkaKortti().getTunnus());
+        assertEquals("B", p.getTokaKortti().getTunnus());
+    }
+
+    @Test
+    public void testEkanJaTokanIndeksinSetteritJaGetterit() {
+        p.setEkanIndeksi(0);
+        p.setTokanIndeksi(1);
+        assertEquals(0, p.getEkanIndeksi());
+        assertEquals(1, p.getTokanIndeksi());
+    }
+
+    @Test
+    public void testKortitOlivatPari() {
+        p.kortitOlivatPari();
+        assertEquals(30, p.getParejaJaljella());
+        assertEquals("Hyvä Pelaaja 1, löysit parin! Saat jatkaa, paina mitä tahansa näppäintä.", kali.getViestikentta().getText());
+        assertEquals("Pelaaja 1: 1 pari    Pelaaja 2: 0 paria    ", kali.getPistekentta().getText());
+    }
+
+    @Test
+    public void testPeliLoppu() {
+        for (int i = 0; i < 31; i++) {
+            p.pariLoydetty();
+        }
+        List<Kortti> kortit = new ArrayList<>();
+        kortit.add(new Kortti("A"));
+        kortit.add(new Kortti("A"));
+        p.kaannaKortti(0);
+        p.kaannaKortti(1);
+        assertEquals(1, p.vuorossaOleva().getParit());
+        assertEquals("Pelaaja 1: 1 pari    Pelaaja 2: 0 paria    ", kali.getPistekentta().getText());
+        assertEquals("Peli loppui, onnea voittajalle!", kali.getViestikentta().getText());
+    }
+
+    @Test
+    public void testKaannaEnsimmainenKortti() {
+        List<Kortti> kortit = new ArrayList<>();
+        kortit.add(new Kortti("A"));
+        p.kaannaEnsimmainenKortti(0);
+        assertEquals("Vuorossa Pelaaja 1, valitse toinen kortti.", kali.getViestikentta().getText());
+    }
+
+    @Test
+    public void testPoistKortit() {
+        List<Kortti> kortit = new ArrayList<>();
+        kortit.add(new Kortti("A"));
+        kortit.add(new Kortti("A"));
+        p.poistaKortit();
+        assertEquals("Vuorossa Pelaaja 1, valitse ensimmäinen kortti.", kali.getViestikentta().getText());
+    }
 }

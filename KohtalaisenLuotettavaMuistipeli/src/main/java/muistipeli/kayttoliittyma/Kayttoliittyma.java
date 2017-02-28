@@ -132,4 +132,20 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
 
         pistekentta.setText(pisteet);
     }
+
+    @Override
+    public JLabel getViestikentta() {
+        return viestikentta;
+    }
+
+    @Override
+    public JLabel getPistekentta() {
+        return pistekentta;
+    }
+    
+    public List<JButton> getNappulat() {
+        return nappulat;
+    }
+    
+    
 }

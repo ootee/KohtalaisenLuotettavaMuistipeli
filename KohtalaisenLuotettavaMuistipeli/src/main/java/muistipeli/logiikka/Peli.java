@@ -18,10 +18,12 @@ public class Peli {
     private int parejaJaljella;
     private Korttipakka korttipakka;
     private Paivitettava paivitettava;
+    private Vaihtaja vaihtaja;
     private Kortti ekaKortti;
     private Kortti tokaKortti;
     private int ekanIndeksi;
     private int tokanIndeksi;
+    private Random random;
 
     /**
      * Alustaa pelin.
@@ -33,6 +35,8 @@ public class Peli {
         this.parejaJaljella = 31;
         this.korttipakka = new Korttipakka();
         this.kortit = korttipakka.getKorttipakka();
+        this.random = new Random();
+        this.vaihtaja = new Vaihtaja(random);
     }
 
     /**
@@ -131,6 +135,7 @@ public class Peli {
         vuoro++;
         paivitettava.kaannaKorttiPiiloon(ekanIndeksi);
         paivitettava.kaannaKorttiPiiloon(tokanIndeksi);
+        vaihtaja.vaihdaKortit(kortit, loydetyt, random);
         paivitettava.asetaTeksti("Vuorossa " + vuorossaOleva().getNimi() + ", valitse ensimmäinen kortti.");
     }
 
@@ -201,7 +206,7 @@ public class Peli {
     public void setPaivitettava(Paivitettava paivitettava) {
         this.paivitettava = paivitettava;
     }
-
+    
     public Kortti getEkaKortti() {
         return ekaKortti;
     }
@@ -214,4 +219,35 @@ public class Peli {
         this.kortit = kortit;
     }
 
+    public int getEkanIndeksi() {
+        return ekanIndeksi;
+    }
+
+    public int getTokanIndeksi() {
+        return tokanIndeksi;
+    }
+
+    public void setEkanIndeksi(int ekanIndeksi) {
+        this.ekanIndeksi = ekanIndeksi;
+    }
+
+    public void setTokanIndeksi(int tokanIndeksi) {
+        this.tokanIndeksi = tokanIndeksi;
+    }
+
+    public int getVuoro() {
+        return vuoro;
+    }
+
+    public void setEkaKortti(Kortti ekaKortti) {
+        this.ekaKortti = ekaKortti;
+    }
+
+    public void setTokaKortti(Kortti tokaKortti) {
+        this.tokaKortti = tokaKortti;
+    }
+
+    public int getParejaJaljella() {
+        return parejaJaljella;
+    }
 }
