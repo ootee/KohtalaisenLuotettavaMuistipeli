@@ -6,6 +6,10 @@ Muistipeli, jossa korttien paikat vaihtuvat satunnaisesti. Pelin voittaa eniten 
 
 [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 
+[Käyttöohjeet](dokumentaatio/kayttoohjeet.md)
+
+[Testausdokumentti](dokumentaatio/testausdokumentti.md)
+
 [Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)
 
 [pit-raportti](https://htmlpreview.github.io/?https://github.com/ootee/KohtalaisenLuotettavaMuistipeli/blob/master/dokumentaatio/pit/report/index.html)
