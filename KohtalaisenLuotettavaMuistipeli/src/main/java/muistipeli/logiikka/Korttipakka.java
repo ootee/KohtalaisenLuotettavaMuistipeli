@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Luo korttipakan jossa korttien tunnuksina on hienoja merkkejä.
+ * Luo muistipelissä käytettävän korttipakan.
  * 
  */
 public class Korttipakka {

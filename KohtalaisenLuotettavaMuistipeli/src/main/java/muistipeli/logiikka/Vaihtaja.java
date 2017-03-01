@@ -20,7 +20,7 @@ public class Vaihtaja {
     }
 
     /**
-     * Metodi vaihtaa kaksi parametrinään saaman listan korttia keskenään. Jos kortti on jo loydetty, sitä ei vaihdeta vaan arvotaan uusi.
+     * Metodi vaihtaa kaksi kortit-listan korttia keskenään. Jos kortti on loydetyt-listalla, sitä ei vaihdeta vaan arvotaan uusi.
      * 
      * @param kortit pelin kaikki kortit
      * @param loydetyt löydetyt kortit

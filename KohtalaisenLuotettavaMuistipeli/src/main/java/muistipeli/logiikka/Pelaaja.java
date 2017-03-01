@@ -1,7 +1,7 @@
 package muistipeli.logiikka;
 
 /**
- * Luokka tarjoaa pelissä käytettävät pelaajaoliot.
+ * Tarjoaa pelissä käytettävät pelaajaoliot.
  *
  */
 public class Pelaaja {
