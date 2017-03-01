@@ -57,8 +57,6 @@ public class Vaihtaja {
             Kortti apu = kortit.get(ekanKortinIndeksi);
             kortit.set(ekanKortinIndeksi, kortit.get(tokanKortinIndeksi));
             kortit.set(tokanKortinIndeksi, apu);
-            //Palautetaan korttilista
-            return kortit;
         }
         return kortit;
     }
