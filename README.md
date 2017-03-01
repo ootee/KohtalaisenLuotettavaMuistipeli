@@ -4,7 +4,7 @@ Muistipeli, jossa korttien paikat vaihtuvat satunnaisesti. Pelin voittaa eniten 
 
 ## Dokumentaatio
 
-[Aiheen kuvaus](dokumentaatio/Aihemäärittely.md)
+[Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 
 [Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)
 
