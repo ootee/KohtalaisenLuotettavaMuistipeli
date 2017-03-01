@@ -13,3 +13,4 @@ Päivä      |Tunnit| Kuvaus
 21.02.2017 |   6  | Peli-luokan muokkaaminen nappipohjaiseen käyttöliittymään, ensimmäinen toimiva versio, JavaDocia, testejä
 24.02.2017 |   2  | Sekvenssikaaviot, peli-luokan refaktorointi, jar, rakennekuvaus, käyttöohje, javadoc
 28.02.2017 |   2  | Testejä peli-luokkaan ja vaihtajan implementoiminen
+01.03.2017 |  1,5 | Github-release, JavaDoc-HTML, testausdokumentti, Pit ja checkstyle
