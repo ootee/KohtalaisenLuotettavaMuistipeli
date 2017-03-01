@@ -1,4 +1,4 @@
-Pelin säännöt ja käyttöohjeet
+**Pelin säännöt ja käyttöohjeet**
 
 Pelissä on yhteensä 64 korttia, jotka muodostavat 32 paria. Pelaaja valitsee vuorollaan kaksi korttia. Jos korttien kuvat vastaavat toisiaan, on pelaaja löytänyt parin ja saa yhden pisteen. Löydetyt parit poistetaan pelilaudalta. Vuoro kuitataan päätetyksi painamalla vapaata korttia. Pelilaudan yläreunassa näkyy ohjelman viestit ja alareunassa reaaliaikainen pistetilanne.
 
